@@ -1,8 +1,11 @@
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Is it New Year's?</title>
+    <!-- django will figure out where the files are located -->
+    <link href="{% static 'newyear/styles.css' %}" rel="stylesheet" />
   </head>
   <body>
     {% if newyear %}

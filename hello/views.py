@@ -6,3 +6,7 @@ from django.shortcuts import render
 
 def index(request):
     return HttpResponse('Hello World')
+
+
+def gamy(request):
+    return HttpResponse('Hello, Gamy')

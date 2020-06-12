@@ -14,4 +14,7 @@ def gamy(request):
 
 
 def greet(request, name):
-    return HttpResponse(f'Hello, {name.capitalize()}')
+    # optional third argument which is info provided to the template
+    return render(request, "hello/greet.html", {
+        "name": name.capitalize()
+    })

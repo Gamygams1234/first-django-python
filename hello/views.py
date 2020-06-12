@@ -5,7 +5,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse('Hello World')
+    # redering a template
+    return render(request, "hello/index.html")
 
 
 def gamy(request):
@@ -13,4 +14,4 @@ def gamy(request):
 
 
 def greet(request, name):
-    return HttpResponse(f'Hello, {name}')
+    return HttpResponse(f'Hello, {name.capitalize()}')

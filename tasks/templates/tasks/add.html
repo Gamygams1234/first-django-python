@@ -1,6 +1,7 @@
 {% extends "tasks/layout.html" %} {% block body %}
 <h1>Add Tasks</h1>
-<form action="/tasks/" method="POST">
+<!-- take out the action  so you can post -->
+<form method="post">
   {% csrf_token %} {{form}}
   <input type="submit" />
 </form>

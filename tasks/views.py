@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-tasks = ['foo', 'bar', 'baz']
 
 
 class NewTaskForm(forms.Form):
@@ -12,9 +11,10 @@ class NewTaskForm(forms.Form):
 
 
 def index(request):
-
+    if "tasks" not in request.session:
+        request.session["tasks"] = []
     return render(request, "tasks/index.html", {
-        'tasks': tasks
+        'tasks': request.session["tasks"]
     })
 
 
@@ -24,7 +24,7 @@ def add(request):
         form = NewTaskForm(request.POST)
         if form.is_valid():
             task = form.cleaned_data["task"]
-            tasks.append(task)
+            request.session["tasks"] += [task]
             return HttpResponseRedirect('/tasks')
         else:  # we send back the existing data if it does not work
             return render(request, "tasks/add.html", {
